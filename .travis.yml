@@ -14,7 +14,7 @@ before_install:
 
 #Script means the script used to run for the test
 Script:
-  - docker run wangken82/udemy npm run test -- --coverage
-
+  #- docker run wangken82/udemy npm run test -- --coverage
+  - docker run -e CI=true wangken82/udemy npm run test
   #if only use npm run test,  the container will wait us for input. need add
   #parameter --converage to make sure auto test all the js file.
