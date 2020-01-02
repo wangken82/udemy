@@ -1,0 +1,20 @@
+language: generic
+sudo: required   #means it needs root previledge
+services:
+  - docker                #means need docker service preinstalled
+
+
+#before install means a series of commands needs to be executed before the test
+#run
+
+before_install:
+  - docker build -t wangken82/udemy -f Dockerfile.dev .
+  # the tag better to use account name and the repository in Travis-CI.
+  #btw we can use any other tag here. the tag only inside travis
+
+#Script means the script used to run for the test
+Script:
+  - docker run wangken82/udemy npm run test -- --coverage
+
+  #if only use npm run test,  the container will wait us for input. need add
+  #parameter --converage to make sure auto test all the js file.
