@@ -18,3 +18,13 @@ Script:
   - docker run -e CI=true wangken82/udemy npm run test
   #if only use npm run test,  the container will wait us for input. need add
   #parameter --converage to make sure auto test all the js file.
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-191913191974"
+  bucket_path: "docker"
+  on:
+    branch: master
